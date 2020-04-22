@@ -6,7 +6,7 @@
 # https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
 
 vendor/
-apps/cache
+cache/
 .env
 composer.lock
 .vscode

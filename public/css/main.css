@@ -722,7 +722,7 @@ th {
     .fixed-view-menu p a,
     .fixed-book-table p a {
       text-transform: uppercase;
-      font-size: 13px;
+      font-size: 12px;
       -webkit-transition: all 0.4s ease 0s;
       -moz-transition: all 0.4s ease 0s;
       -o-transition: all 0.4s ease 0s;
@@ -1951,6 +1951,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(255, 255, 255, 0.4); }
   .home-banner-content p {
     font-size: 18px;
+    color: #fff;
     text-transform: none;
     padding-top: 8px; }
 

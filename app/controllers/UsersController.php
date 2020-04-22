@@ -104,11 +104,13 @@ class UsersController extends ControllerBase
                     }
                 }
                 else{
-                    $this->response->redirect('login');
+                    // $this->response->redirect('login');
+                    $this->view->disable();
                 }
             }
             else{
-                $this->response->redirect('login');
+                // $this->response->redirect('login');
+                $this->view->disable();
             }
         }
     }

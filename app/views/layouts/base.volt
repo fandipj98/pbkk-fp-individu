@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="stylesheet" href="css/util.css">
 </head>
 
 <body>
@@ -99,6 +101,7 @@
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/form.js"></script>
 </body>
 
 </html>

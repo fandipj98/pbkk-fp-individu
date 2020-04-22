@@ -23,12 +23,12 @@
 	</div>
 	<div class="fixed-view-menu">
 		<p>
-			<a href="menu.html">view menu</a>
+			<a href="{{ url("/") }}">view menu</a>
 		</p>
 	</div>
 	<div class="fixed-book-table">
 		<p>
-			<a href="index.html">book a table</a>
+			<a href="{{ url("/") }}">view pesanan</a>
 		</p>
 	</div>
 	<!--================ Left Right And Banner Icon =================-->

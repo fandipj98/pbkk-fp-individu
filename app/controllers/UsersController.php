@@ -45,7 +45,24 @@ class UsersController extends ControllerBase
                 $success = $user->save();
 
                 if($success){
-                    $this->response->redirect('index');              
+                    // Set a session
+                    $this->session->set(
+                        'auth',
+                        [
+                            'id_user' => $user->id_user,
+                            'email' => $user->email,
+                            'firstName' => $user->firstName,
+                            'lastName' => $user->lastName,
+                            'no_telp' => $user->no_telp,
+                            'status' => $user->status,
+                        ]
+                    );
+
+                    // Go to user
+                    if($this->session->get('auth')['status'] == 0){
+                        $this->response->redirect('/');
+                    }
+
                 }
                 else{
                     // echo "Error: " . implode('<br>',$user->getMessages());
@@ -96,7 +113,7 @@ class UsersController extends ControllerBase
                     );
 
                     // Go to user
-                    if($this->session->get('auth')['status'] === '0'){
+                    if($this->session->get('auth')['status'] == 0){
                         $this->response->redirect('/');
                         // echo "USER LOGGED IN: ";
                         // echo $this->session->get('auth')['firstName'] . $this->session->get('auth')['lastName'] . $this->session->get('auth')['status'];

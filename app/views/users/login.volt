@@ -4,13 +4,13 @@
 <section class="home-banner-area relative">
 <div class="limiter">
     <div class="container-login100">
-        <div class="wrap-login100 p-l-50 p-r-50 p-t-50 p-b-33">
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-40 p-b-40">
             <form method="POST" action="{{ url("login") }}" class="login100-form validate-form flex-sb flex-w">
                 <span class="login100-form-title p-b-5">
                     Login
                 </span>
                 
-                <div class="p-t-10 p-b-9">
+                <div class="p-t-10 p-b-7">
                     <span class="txt1">
                         Email
                     </span>
@@ -20,7 +20,7 @@
                     <span class="focus-input100"></span>
                 </div>
                 
-                <div class="p-t-10 p-b-9">
+                <div class="p-t-10 p-b-7">
                     <span class="txt1">
                         Password
                     </span>
@@ -30,7 +30,7 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="container-login100-form-btn m-t-17">
+                <div class="container-login100-form-btn m-t-30">
                     <button class="login100-form-btn">
                         Login
                     </button>

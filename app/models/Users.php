@@ -5,7 +5,6 @@ Namespace App\Models;
 use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Email;
-use Phalcon\Validation\Validator\Uniqueness;
 use Phalcon\Validation\Validator\StringLength;
 
 
@@ -19,6 +18,30 @@ class Users extends Model
     public $pass;
     public $no_telp;
     public $status;
+
+    // inisialisai relasi dengan model lain
+    public function initialize()
+    {
+        $this->hasMany(
+            'id_user',
+            Keranjang::class,
+            'id_user',
+            [
+                'reusable' => true,
+                'alias' => 'keranjang'
+            ]
+        );
+
+        $this->hasMany(
+            'id_user',
+            Pesanan::class,
+            'id_user',
+            [
+                'reusable' => true,
+                'alias' => 'pesanan'
+            ]
+        );
+    }
 
     // validate email
     public function validation()
@@ -59,4 +82,3 @@ class Users extends Model
         return $this->validate($validator);
     }
 }
-

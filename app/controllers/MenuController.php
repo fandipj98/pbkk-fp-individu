@@ -9,9 +9,19 @@ class MenuController extends ControllerBase
 
     public function indexAction()
     {
-        $menu = Menu::find();
-        $this->view->menu = $menu;
+        $menus = Menu::find();
+        $this->view->menus = $menus;
     }
 
+    public function showAction($menuId)
+    {
+        $conditions = ['id' => $menuId];
+        $menu = Menu::findFirst([
+            'conditions' => 'id_menu = :id:',
+            'bind' => $conditions,
+        ]);
+
+        $this->view->menu = $menu;
+    }
 
 }

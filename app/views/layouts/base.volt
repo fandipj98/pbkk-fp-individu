@@ -47,7 +47,7 @@
 						<a href="{{ url("/") }}">About</a>
 					</div>
 					<div class="col-3 logo">
-						<a href="{{ url("/") }}"><img class="mx-auto" src="img/RestoKu.png" alt=""></a>
+						<a href="{{ url("/") }}"><img class="mx-auto" src="{{ url("img/RestoKu.png") }}" alt=""></a>
 					</div>
 					<nav class="col navbar navbar-expand-md justify-content-end">
 
@@ -66,7 +66,7 @@
 											{{ session.get('auth')['firstName'] }}
 										</a>
 										<div class="dropdown-menu">
-											<a class="dropdown-item" href="{{ url("/") }}">Keranjang</a>
+											<a class="dropdown-item" href="{{ url("keranjang") }}">Keranjang</a>
 											<a class="dropdown-item" href="{{ url("/") }}">Pesanan</a>
 											<a class="dropdown-item" href="{{ url("logout") }}">Logout</a>
 										</div>

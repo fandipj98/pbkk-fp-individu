@@ -4,7 +4,7 @@
 <section class="home-banner-area relative">
 <div class="limiter">
     <div class="container-login100">
-        <div class="wrap-login100 p-l-50 p-r-50 p-t-20 p-b-25">
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-10 p-b-20">
             <form method="POST" action="{{ url("register") }}" class="login100-form validate-form flex-sb flex-w">
                 <span class="login100-form-title p-b-5">
                     Register

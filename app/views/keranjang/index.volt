@@ -21,16 +21,36 @@
 	</section>
     <!--================ End banner Area =================-->
     
-    {% for keranjang in keranjangs %}
-	<div class="col-lg-4 col-md-6">
-		<div class="menu-area">
-			<div>
-				<h3>{{ keranjang.menu.nama_menu }}</h3>
-				<h4>{{ keranjang.jumlah_item }}</h4>
-				<h4><span>Rp. </span>{{ keranjang.harga_sementara }}</h4>
-			</div>
-		</div>
-	</div>
-	{% endfor %}
+	<table>
+		<tbody>
+			{% for keranjang in keranjangs %}
+				<tr>
+					<td>{{ keranjang.menu.nama_menu }}</td>
+					<td>
+						<form method="POST" action="{{ url("keranjang/update") }}">
+							<input name="flag" value="0" hidden>
+							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+							<button type="submit" class="genric-btn primary">-</button>
+						</form>
+					</td>
+					<td>{{ keranjang.jumlah_item }}</td>
+					<td>
+						<form method="POST" action="{{ url("keranjang/update") }}">
+							<input name="flag" value="1" hidden>
+							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+							<button type="submit" class="genric-btn primary">+</button>
+						</form>
+					</td>
+					<td>Rp. {{ keranjang.harga_sementara }}</td>
+					<td>
+						<form method="POST" action="{{ url("keranjang/delete") }}">
+							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+							<button type="submit" class="genric-btn danger">Delete</button>
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 {% endblock %}

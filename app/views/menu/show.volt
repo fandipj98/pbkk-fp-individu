@@ -62,7 +62,7 @@
                         {% if menu.tersedia > 0 %}
                             <div class="col-lg-4">
                                 <form method="POST" action="{{ url("keranjang/create") }}">
-                                    <input class="input100" name="id_menu" value="{{ menu.id_menu }}" hidden>
+                                    <input name="id_menu" value="{{ menu.id_menu }}" hidden>
                                     <button type="submit" class="primary-btn">Tambah Ke Keranjang</button>
                                 </form>
                             </div>

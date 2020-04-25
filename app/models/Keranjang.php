@@ -12,6 +12,7 @@ class Keranjang extends Model
     public $id_menu;
     public $jumlah_item;
     public $harga_sementara;
+    public $status_keranjang;
 
     // inisialisai relasi dengan model lain
     public function initialize()

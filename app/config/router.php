@@ -64,4 +64,10 @@ $router->add('/logout', [
     'action' =>  'logout',
 ]);
 
+$router->add('/pembayaran', [
+    'namespace' => 'App\Controllers',
+    'controller' =>  'pesanan',
+    'action' =>  'pembayaran',
+]);
+
 $router->handle($di->get('request_uri'));

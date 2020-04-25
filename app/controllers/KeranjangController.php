@@ -10,14 +10,17 @@ class KeranjangController extends ControllerBase
 
     public function indexAction()
     {
-        $userId = $this->session->get('auth')['id_user'];
-        $conditions = ['id' => $userId];
-        $keranjangs = Keranjang::find([
-            'conditions' => 'id_user = :id:',
-            'bind' => $conditions,
-        ]);
+        $id_user = $this->session->get('auth')['id_user'];
+        $query = $this->modelsManager->createQuery("SELECT * FROM App\Models\Keranjang x WHERE x.id_user = $id_user AND x.status_keranjang = 0");
+        $keranjangs = $query->execute();
 
-        $this->view->keranjangs = $keranjangs;
+        if($keranjangs->count() > 0){
+            $this->view->keranjangs = $keranjangs;
+            $this->view->flag = 1;
+        }
+        else{
+            $this->view->flag = 0;
+        }
     }
     
     public function createAction()
@@ -31,7 +34,7 @@ class KeranjangController extends ControllerBase
                 'bind' => $conditions,
             ]);
             if($menu->tersedia > 0){
-                $query = $this->modelsManager->createQuery("SELECT * FROM App\Models\Keranjang x WHERE x.id_user = $id_user AND x.id_menu = $id_menu");
+                $query = $this->modelsManager->createQuery("SELECT * FROM App\Models\Keranjang x WHERE x.id_user = $id_user AND x.id_menu = $id_menu AND x.status_keranjang = 0");
                 $checkKeranjang = $query->execute();
 
                 if($checkKeranjang->count() > 0){
@@ -63,6 +66,7 @@ class KeranjangController extends ControllerBase
                     $keranjang->id_menu = $id_menu;
                     $keranjang->jumlah_item = 1;
                     $keranjang->harga_sementara = $menu->harga_menu;
+                    $keranjang->status_keranjang = 0;
                     
                     $success = $keranjang->save();
 
@@ -98,7 +102,7 @@ class KeranjangController extends ControllerBase
     {
         if($this->request->isPost()){
             $id_keranjang = $this->request->getPost('id_keranjang', 'int');
-            $flag = $this->request->getPost('flag', 'int');
+            $buttonFlag = $this->request->getPost('buttonFlag', 'int');
             $conditions = ['id' => $id_keranjang];
             $keranjang = Keranjang::findFirst([
                 'conditions' => 'id_keranjang = :id:',
@@ -106,7 +110,7 @@ class KeranjangController extends ControllerBase
             ]);
             $id_menu = $keranjang->id_menu;
             
-            if($flag == 0){
+            if($buttonFlag == 0){
                 // Mengurangi item keranjang
                 if($keranjang->jumlah_item > 1){
                     $hargaSatuan = $keranjang->harga_sementara / $keranjang->jumlah_item;

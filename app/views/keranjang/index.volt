@@ -20,37 +20,45 @@
 		</div>
 	</section>
     <!--================ End banner Area =================-->
-    
-	<table>
-		<tbody>
-			{% for keranjang in keranjangs %}
-				<tr>
-					<td>{{ keranjang.menu.nama_menu }}</td>
-					<td>
-						<form method="POST" action="{{ url("keranjang/update") }}">
-							<input name="flag" value="0" hidden>
-							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-							<button type="submit" class="genric-btn primary">-</button>
-						</form>
-					</td>
-					<td>{{ keranjang.jumlah_item }}</td>
-					<td>
-						<form method="POST" action="{{ url("keranjang/update") }}">
-							<input name="flag" value="1" hidden>
-							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-							<button type="submit" class="genric-btn primary">+</button>
-						</form>
-					</td>
-					<td>Rp. {{ keranjang.harga_sementara }}</td>
-					<td>
-						<form method="POST" action="{{ url("keranjang/delete") }}">
-							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-							<button type="submit" class="genric-btn danger">Delete</button>
-						</form>
-					</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	
+	{% if flag == 1 %}
+		<table>
+			<tbody>
+				{% for keranjang in keranjangs %}
+					<tr>
+						<td>{{ keranjang.menu.nama_menu }}</td>
+						<td>
+							<form method="POST" action="{{ url("keranjang/update") }}">
+								<input name="buttonFlag" value="0" hidden>
+								<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+								<button type="submit" class="genric-btn primary">-</button>
+							</form>
+						</td>
+						<td>{{ keranjang.jumlah_item }}</td>
+						<td>
+							<form method="POST" action="{{ url("keranjang/update") }}">
+								<input name="buttonFlag" value="1" hidden>
+								<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+								<button type="submit" class="genric-btn primary">+</button>
+							</form>
+						</td>
+						<td>Rp. {{ keranjang.harga_sementara }}</td>
+						<td>
+							<form method="POST" action="{{ url("keranjang/delete") }}">
+								<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+								<button type="submit" class="genric-btn danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<div class="col-lg-4">
+			<form method="POST" action="{{ url("pembayaran") }}">
+				<button type="submit" class="primary-btn">Order</button>
+			</form>
+		</div>
+	{% endif %}
 
 {% endblock %}

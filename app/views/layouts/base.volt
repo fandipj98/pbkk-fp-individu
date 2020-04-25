@@ -67,7 +67,7 @@
 										</a>
 										<div class="dropdown-menu">
 											<a class="dropdown-item" href="{{ url("keranjang") }}">Keranjang</a>
-											<a class="dropdown-item" href="{{ url("/") }}">Pesanan</a>
+											<a class="dropdown-item" href="{{ url("pesanan") }}">Pesanan</a>
 											<a class="dropdown-item" href="{{ url("logout") }}">Logout</a>
 										</div>
 									</li>

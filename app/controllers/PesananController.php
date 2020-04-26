@@ -9,6 +9,14 @@ use App\Models\Users;
 class PesananController extends ControllerBase
 {
 
+    public function beforeExecuteRoute(){
+        if($this->session->has('auth') == 0){
+            $this->flashSession->error('You must login first!');
+            $this->response->redirect('login');
+            return false;
+        }
+    }
+
     public function indexAction()
     {
         // read pesanan
@@ -110,34 +118,35 @@ class PesananController extends ControllerBase
                                 $this->response->redirect('pesanan');
                             }
                             else{
-                                echo "Error: Keranjang gagal diupdate";
-                                $this->view->disable();
+                                $this->flashSession->error("Error: Keranjang gagal diupdate");
+                                $this->response->redirect('error');
                             }
                         }
                         else{
-                            echo "Error: Keranjang belanja tidak ditemukan ";
-                            $this->view->disable();
+                            $this->flashSession->error("Error: Keranjang belanja tidak ditemukan");
+                            $this->response->redirect('error');
                         }
                     }
                     else{
-                        echo "Error: Pesanan tidak berhasil dibuat";
-                        $this->view->disable();
+                        $this->flashSession->error("Error: Pesanan tidak berhasil dibuat");
+                        $this->response->redirect('error');
                     }
 
                 }
                 else{
-                    echo "Error: Ekstensi file salah, mohon ikuti instruksi yang ada.";
-                    $this->view->disable();
+                    $this->flashSession->error("Error: Ekstensi file salah, mohon ikuti instruksi yang ada.");
+                    $this->response->redirect('error');
                 }
                 
             }
             else{
-                echo "Error: Upload file gagal."; 
-                $this->view->disable();
+                $this->flashSession->error("Error: Upload file gagal.");
+                $this->response->redirect('error');
             }
         }
         else{
-            $this->response->redirect('/');
+            $this->flashSession->error("Error: Bukan method post pesanan.");
+            $this->response->redirect('error');
         }
     }
 

@@ -41,7 +41,9 @@ class Users extends Model
                 'alias' => 'pesanan'
             ]
         );
+
     }
+
 
     // validate email
     public function validation()
@@ -61,23 +63,17 @@ class Users extends Model
         );
 
         $validator->add(
-            'pass',
+            'no_telp',
             new StringLength(
                 [
-                    'messageMinimum' => 'The Password is too short, Minimum length is 3',
-                    'min'            => 3,
+                    'messageMinimum' => 'The Telp Number is too short, Minimum length is 10',
+                    'min'            => 10,
                 ]
             )
         );
+
         $validator->setFilters('email', 'trim');
         $validator->setFilters('no_telp', 'trim');
-
-        $messages = $validator->validate($_POST);
-        if (count($messages)) {
-            foreach ($messages as $message) {
-                echo 'Error: ', $message, '<br>';
-            }
-        }
 
         return $this->validate($validator);
     }

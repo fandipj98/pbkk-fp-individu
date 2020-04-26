@@ -76,4 +76,10 @@ $router->add('/about', [
     'action' =>  'about',
 ]);
 
+$router->add('/error', [
+    'namespace' => 'App\Controllers',
+    'controller' =>  'error',
+    'action' =>  'error',
+]);
+
 $router->handle($di->get('request_uri'));

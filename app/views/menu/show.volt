@@ -35,7 +35,7 @@
                             <p class="excert fz-18"> {{ menu.deskripsi_menu }}</p>
                             <div>
                                 <h4 class="excert">Tipe Hidangan: </h4>
-                                <h4 class="excert">{{ menu.jenis_menu }}</h4>
+                                <p class="excert fz-18">{{ menu.jenis_menu }}</p>
                             </div>
                             <h4 class="excert">Tersedia: {{ menu.tersedia }}</h4>
 							<h4 class="excert"><span>Rp. </span>{{ menu.harga_menu }}</h4>

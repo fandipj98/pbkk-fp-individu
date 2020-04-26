@@ -43,23 +43,34 @@
 					<div class="cta-owl owl-carousel">
 						<div class="item">
 							<div class="cta-img">
-								<img src="img/callaction-bg.jpg" class="img-fluid" alt="">
+								<img src="{{ url("img/menu/salad.jpg") }}" alt="" width="900" height="500">
 							</div>
 							<div class="text-box text-center">
-								<h3 class="mb-10">Main Course</h3>
+								<h3 class="mb-10">Appetizer</h3>
 								<p>
-									Chicken Steak with gerlic bread & Fries
+									Fresh Salad with Vegetables & Fruits
 								</p>
 							</div>
 						</div>
 						<div class="item">
 							<div class="cta-img">
-								<img src="img/callaction-bg.jpg" class="img-fluid" alt="">
+								<img src="{{ url("img/menu/nasi-goreng.jpg") }}" alt="" width="900" height="500">
 							</div>
 							<div class="text-box text-center">
 								<h3 class="mb-10">Main Course</h3>
 								<p>
-									Chicken Steak with gerlic bread & Fries
+									Fried Rice with Chicken & Egg
+								</p>
+							</div>
+						</div>
+						<div class="item">
+							<div class="cta-img">
+								<img src="{{ url("img/menu/pisang-goreng.jpg") }}" alt="" width="900" height="500">
+							</div>
+							<div class="text-box text-center">
+								<h3 class="mb-10">Dessert</h3>
+								<p>
+									Fried Banana with Rice Flour
 								</p>
 							</div>
 						</div>
@@ -70,70 +81,37 @@
 	</section>
 	<!--================ End Call To Action Area =================-->
 
-	<!--================ Menu Area =================-->
-	<section class="menu-area" id="menu_area">
+	<!--================ About Area =================-->
+	<section class="about-area section-gap-top">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-lg-5 col-md-5">
-					<div class="section-title relative">
-						<h1>
-							Daily Food <br>
-							Courses <br>
-							with Drinks
-						</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.</p>
-						<a href="#" class="primary-btn text-uppercase">See Full Menu</a>
+				<div class="col-lg-6 col-md-6">
+					<div class="">
+						<img class="img-fluid" src="img/about-img.jpg" alt="">
 					</div>
 				</div>
-				<div class="col-lg-7 col-md-7">
-					<div class="menu-list">
-						<div class="single-menu">
-							<h3>Appetizer</h3>
-							<ul class="list">
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-							</ul>
-						</div>
-
-						<div class="single-menu">
-							<h3>Main Courses</h3>
-							<ul class="list">
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-							</ul>
-						</div>
-
-						<div class="single-menu">
-							<h3>Drinks & Juices</h3>
-							<ul class="list">
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-							</ul>
-						</div>
+				<div class="offset-lg-1 col-lg-5 col-md-6">
+					<div class="section-title relative">
+						<h1>
+							About <br>
+							RestoKu
+						</h1>
+						<p>
+							RestoKu adalah website atau aplikasi yang memiliki fungsi utama untuk melakukan reservasi tempat makan dan pesan antar makanan secara online di sebuah restoran. 
+							 Dalam aplikasi ini, user dapat melihat jenis – jenis tempat makan yang tersedia dan juga bisa melihat fasilitasnya. 
+							 Setelah user memilih tempat makan yang diinginkan, maka user dapat membuat reservasi tempat makan di restoran tersebut. 
+							 Selain itu user juga dapat melihat detail reservasi, mengedit reservasi, dan menghapus reservasi. 
+							 Kemudian user juga bisa melihat menu - menu makanan yang ada di restoran tersebut dan dapat memesan makanan secara online. 
+							 Setelah user memilih makanan yang ingin dipesan, maka user dapat memasukkan makanan yang ingin dipesan ke keranjang makanan. 
+							 Selain itu user juga dapat melihat keranjang makanan, mengedit keranjang makanan, dan menghapus keranjang makanan.
+							 Kemudian user dapat membuat pesanan sesuai dengan menu – menu yang telah dimasukkan ke keranjang makanan.
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!--================End Menu Area =================-->
+    </section>
+    <br>
+	<!--================ End About Area =================-->
+
 {% endblock %}

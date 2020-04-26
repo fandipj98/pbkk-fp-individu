@@ -8,6 +8,14 @@ use App\Models\Menu;
 class KeranjangController extends ControllerBase
 {
 
+    public function beforeExecuteRoute(){
+        if($this->session->has('auth') == 0){
+            $this->flashSession->error('You must login first!');
+            $this->response->redirect('login');
+            return false;
+        }
+    }
+
     public function indexAction()
     {
         $id_user = $this->session->get('auth')['id_user'];
@@ -39,10 +47,12 @@ class KeranjangController extends ControllerBase
 
                 if($checkKeranjang->count() > 0){
                     // lakukan update keranjang pada item yang sama
-                    $checkKeranjang->jumlah_item = $checkKeranjang->jumlah_item + 1;
-                    $checkKeranjang->harga_sementara = $checkKeranjang->harga_sementara + $menu->harga_menu;
-                    
-                    $success = $checkKeranjang->save();
+
+                    foreach($checkKeranjang as $cekKeranjang){
+                        $cekKeranjang->jumlah_item = $cekKeranjang->jumlah_item + 1;
+                        $cekKeranjang->harga_sementara = $cekKeranjang->harga_sementara + $menu->harga_menu;
+                        $success = $cekKeranjang->update();
+                    }
                     
                     if($success){
                         $menu->tersedia = $menu->tersedia - 1;
@@ -51,11 +61,13 @@ class KeranjangController extends ControllerBase
                             $this->response->redirect('keranjang');
                         }
                         else{
-                            echo "Error: Jumlah stok menu tersedia gagal diupdate";
+                            $this->flashSession->error("Error: Jumlah stok menu tersedia gagal diupdate");
+                            $this->response->redirect('keranjang');
                         }
                     }
                     else{
-                        echo "Error: Jumlah item keranjang gagal diupdate";
+                        $this->flashSession->error("Error: Jumlah item keranjang gagal diupdate");
+                        $this->response->redirect('keranjang');
                     }
                     
                 }
@@ -77,24 +89,26 @@ class KeranjangController extends ControllerBase
                             $this->response->redirect('keranjang');
                         }
                         else{
-                            echo "Error: Jumlah stok menu tersedia gagal diupdate";
+                            $this->flashSession->error("Error: Jumlah stok menu tersedia gagal diupdate");
+                            $this->response->redirect('keranjang');
                         }
                     }
                     else{
-                        echo "Error: Item keranjang gagal dibuat";
+                        $this->flashSession->error("Error: Item keranjang gagal dibuat");
+                        $this->response->redirect('keranjang');
                     }
-
                 }
 
             }
             else{
-                echo "Error: Jumlah stok menu tersedia sudah habis";
+                $this->flashSession->error("Error: Jumlah stok menu tersedia sudah habis");
+                $this->response->redirect('keranjang');
             }
 
         }
         else{
-            echo "Error: Bukan method post keranjang";
-            $this->response->redirect('/');
+            $this->flashSession->error("Error: Bukan method post keranjang");
+            $this->response->redirect('error');
         }
     }
 
@@ -131,11 +145,13 @@ class KeranjangController extends ControllerBase
                             $this->response->redirect('keranjang');
                         }
                         else{
-                            echo "Error: Jumlah stok menu tersedia gagal diupdate";
+                            $this->flashSession->error("Error: Jumlah stok menu tersedia gagal diupdate");
+                            $this->response->redirect('keranjang');
                         }
                     }
                     else{
-                        echo "Error: Item keranjang gagal diupdate";
+                        $this->flashSession->error("Error: Item keranjang gagal diupdate");
+                        $this->response->redirect('keranjang');
                     }
 
                 }
@@ -155,11 +171,13 @@ class KeranjangController extends ControllerBase
                             $this->response->redirect('keranjang');
                         }
                         else{
-                            echo "Error: Item keranjang gagal didelete";   
+                            $this->flashSession->error("Error: Item keranjang gagal didelete");
+                            $this->response->redirect('keranjang');
                         }
                     }
                     else{
-                        echo "Error: Jumlah stok menu tersedia gagal diupdate";
+                        $this->flashSession->error("Error: Jumlah stok menu tersedia gagal diupdate");
+                        $this->response->redirect('keranjang');
                     }
                 }
             }
@@ -185,21 +203,24 @@ class KeranjangController extends ControllerBase
                             $this->response->redirect('keranjang');
                         }
                         else{
-                            echo "Error: Jumlah stok menu tersedia gagal diupdate";
+                            $this->flashSession->error("Error: Jumlah stok menu tersedia gagal diupdate");
+                            $this->response->redirect('keranjang');
                         }
                     }
                     else{
-                        echo "Error: Jumlah item keranjang gagal diupdate";
+                        $this->flashSession->error("Error: Jumlah item keranjang gagal diupdate");
+                        $this->response->redirect('keranjang');
                     }
                 }
                 else{
-                    echo "Error: Jumlah stok menu tersedia sudah habis";
+                    $this->flashSession->error("Error: Jumlah stok menu tersedia sudah habis");
+                    $this->response->redirect('keranjang');
                 }
             }
         }
         else{
-            echo "Error: Bukan method post keranjang";
-            $this->response->redirect('/');
+            $this->flashSession->error("Error: Bukan method post keranjang");
+            $this->response->redirect('error');
         }
     }
 
@@ -229,16 +250,18 @@ class KeranjangController extends ControllerBase
                     $this->response->redirect('keranjang');
                 }
                 else{
-                    echo "Error: Item keranjang gagal didelete";   
+                    $this->flashSession->error("Error: Item keranjang gagal didelete");
+                    $this->response->redirect('keranjang');
                 }
             }
             else{
-                echo "Error: Jumlah stok menu tersedia gagal diupdate";
+                $this->flashSession->error("Error: Jumlah stok menu tersedia gagal diupdate");
+                $this->response->redirect('keranjang');
             }
         }
         else{
-            echo "Error: Bukan method post keranjang";
-            $this->response->redirect('/');
+            $this->flashSession->error("Error: Bukan method post keranjang");
+            $this->response->redirect('error');
         }
     }
 }

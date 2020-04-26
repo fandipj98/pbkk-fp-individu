@@ -13,6 +13,12 @@ class UsersController extends ControllerBase
         
     }
 
+    public function beforeExecuteRoute(){
+        if($this->session->has('auth')){
+            $this->response->redirect('/');
+        }
+    }
+
     public function registerAction()
     {
         $user = new Users();
@@ -30,16 +36,14 @@ class UsersController extends ControllerBase
         if($pass === $cpass && $pass != ''){
             $checkUser = Users::findFirst("email = '$email'");
             if($checkUser){
-                echo "Error: Email has already been registered";
-                $this->view->disable();
-                // $this->response->redirect('register');
+                $this->flash->error("Error: Email has already been registered");
             }
             else{
                 $user->email = $email;
                 $user->firstName = $firstName;
                 $user->lastName = $lastName;
                 $user->no_telp = $no_telp;
-                $user->pass = $this->security->hash($pass);
+                $user->pass = $pass;
                 $user->status = $status;
 
                 $success = $user->save();
@@ -65,14 +69,12 @@ class UsersController extends ControllerBase
 
                 }
                 else{
-                    // echo "Error: " . implode('<br>',$user->getMessages());
-                    $this->view->disable();
+                    $this->flash->error("Error: " . implode(", ",$user->getMessages()));
                 }
             }
         }
         elseif($pass != ''){
-            echo "Error: Password and Confirm Password not match";
-            $this->view->disable();
+            $this->flash->error("Error: Password and Confirm Password not match");
         }
     }
 
@@ -115,19 +117,14 @@ class UsersController extends ControllerBase
                     // Go to user
                     if($this->session->get('auth')['status'] == 0){
                         $this->response->redirect('/');
-                        // echo "USER LOGGED IN: ";
-                        // echo $this->session->get('auth')['firstName'] . $this->session->get('auth')['lastName'] . $this->session->get('auth')['status'];
-                        // $this->view->disable();
                     }
                 }
                 else{
-                    // $this->response->redirect('login');
-                    $this->view->disable();
+                    $this->flash->error("Error: Password yang anda masukkan salah");
                 }
             }
             else{
-                // $this->response->redirect('login');
-                $this->view->disable();
+                $this->flash->error("Error: Email anda belum terdaftarkan");
             }
         }
     }

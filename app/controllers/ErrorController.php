@@ -17,4 +17,9 @@ class ErrorController extends ControllerBase
         echo 'Server Error';
     }
 
+    public function errorAction()
+    {
+        echo 'Terjadi Error';
+    }
+
 }

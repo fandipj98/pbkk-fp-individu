@@ -1,14 +1,17 @@
 {% extends "layouts/base.volt" %}
 
 {% block content %}
+
 <section class="home-banner-area relative">
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100 p-l-50 p-r-50 p-t-40 p-b-40">
-            <form method="POST" action="{{ url("login") }}" class="login100-form validate-form flex-sb flex-w">
-                <span class="login100-form-title p-b-5">
-                    Login
-                </span>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-40 p-b-40">
+                <form method="POST" action="{{ url("login") }}" class="login100-form validate-form flex-sb flex-w">
+                    <span class="login100-form-title p-b-5">
+                        Login
+                    <div class="fz-18 alert-danger">{{flashSession.output()}}</div>
+                    <div class="fz-18">{{flash.output()}}</div>
+                    </span>
                 
                 <div class="p-t-10 p-b-7">
                     <span class="txt1">

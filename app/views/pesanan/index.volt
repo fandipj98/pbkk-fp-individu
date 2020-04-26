@@ -32,7 +32,7 @@
                     <div class="visit">Harga Total</div>
 					<div class="visit">Alamat Pengantaran</div>
 					<div class="visit">Keterangan Tambahan</div>
-					<div class="serial">Bukti Bayar</div>
+					<div class="visit">Bukti Bayar</div>
 					<div class="visit">Status Pembayaran</div>
 					<div class="visit">Status Pengiriman</div>
 				</div>
@@ -45,7 +45,7 @@
                     <div class="visit">Rp. {{ pesanan.harga_total }}</div>
                     <div class="visit">{{ pesanan.alamat_kirim }}</div>
                     <div class="visit">{{ pesanan.keterangan }}</div>
-					<div class="serial"><img src="{{ pesanan.bukti_bayar }}" alt="flag"></div>
+					<div class="visit"><img src="{{ pesanan.bukti_bayar }}" alt="flag" width="auto" height="150"></div>
 					<div class="visit">
                         {% if pesanan.sudah_dibayar == 1 %}
                             Lunas
@@ -65,6 +65,22 @@
 			</div>
 		</div>
 	</div>
+
+	{% else %}
+
+	<!-- Start pesanan kosong -->
+	<section class="sample-text-area">
+		<div class="container text-center">
+			<h1 class="text-heading">Wah, kamu belum melakukan pesanan</h1>
+			<p class="sample-text fz-18">
+				<b>
+					Daripada dilihatin aja, ayo buruan pesan makanan sekarang!
+				</b>
+			</p>
+		</div>
+	</section>
+	<!-- End pesanan kosong -->
+
 	{% endif %}
 
 {% endblock %}

@@ -8,6 +8,7 @@
             <form method="POST" action="{{ url("register") }}" class="login100-form validate-form flex-sb flex-w">
                 <span class="login100-form-title p-b-5">
                     Register
+                    <div class="fz-18">{{flash.output()}}</div>
                 </span>
                 
                 <div class="p-t-10 p-b-7">
@@ -15,8 +16,8 @@
                         Email
                     </span>
                 </div>
-                <div class="wrap-input100 validate-input" data-validate = "Email is required">
-                    <input class="input100" type="email" name="email" >
+                <div class="wrap-input100" required>
+                    <input class="input100" type="text" name="email" >
                     <span class="focus-input100"></span>
                 </div>
                 

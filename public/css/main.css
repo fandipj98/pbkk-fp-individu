@@ -687,7 +687,7 @@ th {
     font-size: 48px;
     line-height: 1.5;
     letter-spacing: 7.2px;
-    text-transform: uppercase; }
+    text-transform: none; }
     @media (max-width: 991px) {
       .section-title h1 {
         line-height: 1.2;
@@ -935,6 +935,9 @@ th {
     text-align: center !important; }
     .section-top-border .progress-table-wrap .progress-table .table-row .visit {
     display: inline-block; }
+    .section-top-border .progress-table-wrap .progress-table .table-row .country {
+      display: inline-block;
+      width: 100px; }
 
 .switch-wrap {
   margin-bottom: 10px; }
@@ -944,7 +947,7 @@ th {
 /*---------- End Elements Page -------------*/
 .sample-text-area {
   background: #f9f9ff;
-  padding: 100px 0 70px 0; }
+  padding: 40px 0 70px 0; }
 
 .sample-text {
   margin-bottom: 0; }
@@ -1176,8 +1179,9 @@ h1, h2, h3, h4, h5, h6 {
   .progress-table .serial {
     width: 11.83%;
     padding-left: 30px; }
+  
   .progress-table .country {
-    width: 28.07%; }
+    width: 11.83%; }
   .progress-table .visit {
     width: 19.74%;
   text-align: center; }

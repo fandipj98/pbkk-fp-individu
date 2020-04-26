@@ -19,7 +19,12 @@
 			</div>
 		</div>
 	</section>
-    <!--================ End banner Area =================-->
+
+	<!-- Jika terjadi error  -->
+	<div class="text-center fz-18 alert-danger">{{flashSession.output()}}</div>
+    <div class="text-center fz-18">{{flash.output()}}</div>
+	
+	<!--================ End banner Area =================-->
 	{% if flag == 1 %}
 
 	<div class="section-top-border">
@@ -68,6 +73,21 @@
 			</div>
 		</div>
 	</div>
+	{% else %}
+
+	<!-- Start keranjang kosong -->
+	<section class="sample-text-area">
+		<div class="container text-center">
+			<h1 class="text-heading">Wah, keranjang makananmu kosong</h1>
+			<p class="sample-text fz-18">
+				<b>
+					Daripada dikosongi, mending isi dengan makanan-makanan kesukaanmu!
+				</b>
+			</p>
+		</div>
+	</section>
+	<!-- End keranjang kosong -->
+
 	{% endif %}
 
 {% endblock %}

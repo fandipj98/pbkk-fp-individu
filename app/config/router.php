@@ -70,4 +70,10 @@ $router->add('/pembayaran', [
     'action' =>  'pembayaran',
 ]);
 
+$router->add('/about', [
+    'namespace' => 'App\Controllers',
+    'controller' =>  'index',
+    'action' =>  'about',
+]);
+
 $router->handle($di->get('request_uri'));

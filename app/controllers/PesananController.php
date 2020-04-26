@@ -16,7 +16,7 @@ class PesananController extends ControllerBase
 
         $conditions = ['id' => $id_user];
         $pesanans = Pesanan::find([
-            'conditions' => 'id_pesanan = :id:',
+            'conditions' => 'id_user = :id:',
             'bind' => $conditions,
         ]);
 
@@ -67,37 +67,77 @@ class PesananController extends ControllerBase
             $harga_total = $this->request->getPost('harga_total', 'int');
             $alamat_kirim = $this->request->getPost('alamat_kirim', 'string');
             $keterangan = $this->request->getPost('keterangan', 'string');
+            $keterangan = $keterangan . "\n";
             $sudah_dibayar = 1;
             $status_pengiriman = 0;
 
             // Cek file bukti bayar berupa foto atau tidak
+            $path ='img/pesanan/';
+            if ($this->request->hasFiles()) {
+                $gambar = $this->request->getUploadedFiles()[0];
+                $allowed = array('jpeg', 'png', 'jpg');
+                $filename = $gambar->getName();
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                // cek ekstensi file
+                if (in_array($ext, $allowed)) {
+                    $path = $path . $id_user . "_" . time() . "_" . $filename;
+                    $gambar->moveTo($path);
 
-            // $path ='img/pesanan/'.$isbn.'.jpg';
-            // if ($this->request->hasFiles()) {
-            //     $gambar = $this->request->getUploadedFiles()[0];
-            //     $gambar->moveTo($path);
-            // }
-            
-            $query = $this->modelsManager->createQuery("SELECT * FROM App\Models\Keranjang x WHERE x.id_user = $id_user AND x.status_keranjang = 0");
-            $keranjangs = $query->execute();
+                    // create new pesanan
+                    $pesanan = new Pesanan();
+                    $pesanan->id_user = $id_user;
+                    $pesanan->harga_subtotal = $harga_subtotal;
+                    $pesanan->ongkos_kirim = $ongkos_kirim;
+                    $pesanan->harga_total = $harga_total;
+                    $pesanan->alamat_kirim = $alamat_kirim;
+                    $pesanan->keterangan = $keterangan;
+                    $pesanan->bukti_bayar = $path;
+                    $pesanan->sudah_dibayar = 1;
+                    $pesanan->status_pengiriman = 0;
 
-            if($keranjangs->count() > 0){
-                foreach($keranjangs as $keranjang){
-                    $keranjang->status_keranjang = 1;
-                }
-                $success = $keranjangs->save();
-                if($success){
+                    $berhasil = $pesanan->save();
+
+                    if($berhasil){
+                        $query = $this->modelsManager->createQuery("SELECT * FROM App\Models\Keranjang x WHERE x.id_user = $id_user AND x.status_keranjang = 0");
+                        $keranjangs = $query->execute();
+                        
+                        if($keranjangs->count() > 0){
+                            foreach($keranjangs as $keranjang){
+                                $keranjang->status_keranjang = 1;
+                                $success = $keranjang->update();
+                            }
+                            if($success){
+                                $this->response->redirect('pesanan');
+                            }
+                            else{
+                                echo "Error: Keranjang gagal diupdate";
+                                $this->view->disable();
+                            }
+                        }
+                        else{
+                            echo "Error: Keranjang belanja tidak ditemukan ";
+                            $this->view->disable();
+                        }
+                    }
+                    else{
+                        echo "Error: Pesanan tidak berhasil dibuat";
+                        $this->view->disable();
+                    }
 
                 }
                 else{
-
+                    echo "Error: Ekstensi file salah, mohon ikuti instruksi yang ada.";
+                    $this->view->disable();
                 }
+                
             }
             else{
-
+                echo "Error: Upload file gagal."; 
+                $this->view->disable();
             }
-
-
+        }
+        else{
+            $this->response->redirect('/');
         }
     }
 

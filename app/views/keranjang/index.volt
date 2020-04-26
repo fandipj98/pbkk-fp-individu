@@ -20,45 +20,54 @@
 		</div>
 	</section>
     <!--================ End banner Area =================-->
-	
 	{% if flag == 1 %}
-		<table>
-			<tbody>
-				{% for keranjang in keranjangs %}
-					<tr>
-						<td>{{ keranjang.menu.nama_menu }}</td>
-						<td>
-							<form method="POST" action="{{ url("keranjang/update") }}">
-								<input name="buttonFlag" value="0" hidden>
-								<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-								<button type="submit" class="genric-btn primary">-</button>
-							</form>
-						</td>
-						<td>{{ keranjang.jumlah_item }}</td>
-						<td>
-							<form method="POST" action="{{ url("keranjang/update") }}">
-								<input name="buttonFlag" value="1" hidden>
-								<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-								<button type="submit" class="genric-btn primary">+</button>
-							</form>
-						</td>
-						<td>Rp. {{ keranjang.harga_sementara }}</td>
-						<td>
-							<form method="POST" action="{{ url("keranjang/delete") }}">
-								<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-								<button type="submit" class="genric-btn danger">Delete</button>
-							</form>
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
 
-		<div class="col-lg-4">
-			<form method="POST" action="{{ url("pembayaran") }}">
-				<button type="submit" class="primary-btn">Order</button>
-			</form>
+	<div class="section-top-border">
+		<div class="progress-table-wrap">
+			<div class="progress-table">
+				<div class="table-head">
+					<div class="serial"></div>
+					<div class="visit">Nama Item</div>
+					<div class="visit">Jumlah Item</div>
+					<div class="visit">Harga</div>
+					<div class="visit"></div>
+				</div>
+				{% for keranjang in keranjangs %}
+				<div class="table-row">
+					<div class="serial"> <img src="{{ keranjang.menu.foto_menu }}" alt="flag"></div>
+					<div class="visit">{{ keranjang.menu.nama_menu }}</div>
+					<div class="visit">
+						<form method="POST" action="{{ url("keranjang/update") }}">
+							<input name="buttonFlag" value="1" hidden>
+							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+							<button type="submit" class="genric-btn primary">+</button>
+						</form>
+						<div class="visit">{{ keranjang.jumlah_item }}</div>
+						<form method="POST" action="{{ url("keranjang/update") }}">
+							<input name="buttonFlag" value="0" hidden>
+							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+							<button type="submit" class="genric-btn primary">-</button>
+						</form>
+					</div>
+					<div class="visit">Rp. {{ keranjang.harga_sementara }}</div>
+					<div class="visit">
+						<form method="POST" action="{{ url("keranjang/delete") }}">
+							<input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
+							<button type="submit" class="genric-btn danger">Delete</button>
+						</form>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
 		</div>
+		<div class="mb-50 mr-50">
+			<div class="float-right">
+				<form method="POST" action="{{ url("pembayaran") }}">
+					<button type="submit" class="primary-btn">Order</button>
+				</form>
+			</div>
+		</div>
+	</div>
 	{% endif %}
 
 {% endblock %}

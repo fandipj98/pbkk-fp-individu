@@ -25,24 +25,34 @@
     <!--================ End banner Area =================-->
     
     {% if flag == 1 %}
-		<table>
-			<tbody>
-				{% for keranjang in keranjangs %}
-					<tr>
-						<td>{{ keranjang.menu.nama_menu }}</td>
-						<td>{{ keranjang.jumlah_item }}</td>
-						<td>Rp. {{ keranjang.harga_sementara }}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-
+        <div class="container">
+            <div class="section-top-border">
+                <div class="progress-table-wrap">
+                    <div class="progress-table">
+                        <div class="table-head">
+                            <div class="serial"></div>
+                            <div class="visit">Nama Item</div>
+                            <div class="visit">Jumlah Item</div>
+                            <div class="visit">Harga</div>
+                        </div>
+                        {% for keranjang in keranjangs %}
+                        <div class="table-row">
+                            <div class="serial"> <img src="{{ keranjang.menu.foto_menu }}" alt="flag"></div>
+                            <div class="visit">{{ keranjang.menu.nama_menu }}</div>
+                            <div class="visit">{{ keranjang.jumlah_item }}</div>
+                            <div class="visit">Rp. {{ keranjang.harga_sementara }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- pembayaran form -->
         <section class="reservation-area">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row align-items-center ml-190">
                     <div class="col-lg-7 col-md-6">
-                        <form method="POST" class="booking-form" id="myForm" action="{{ url("pesanan/create") }}">
+                        <form method="POST" action="{{ url("pesanan/create") }}" enctype='multipart/form-data'>
                             <div class="row">
                                 <div class="col-lg-6 d-flex flex-column mb-20">
                                     <label for="subtotal">Subtotal</label>
@@ -76,19 +86,25 @@
                                     <textarea class="form-control" name="keterangan" placeholder="Keterangan Tambahan" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Keterangan Tambahan'" ></textarea>
                                 </div>
-
+                                
                                 <div class="col-lg-6 d-flex flex-column mb-20">
-                                    <label for="total">Bukti Pembayaran</label>
+                                    <label for="rekening">Transfer ke Rekening Berikut (BCA):</label>
                                 </div>
                                 <div class="col-lg-6 d-flex flex-column mb-20">
-                                    <input name="bukti_bayar" placeholder="Bukti Pembayaran" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bukti Pembayaran'"
-                                    class="form-control" required="" type="file">
+                                    <p class="fz-18">1234567890</p>
                                 </div>
 
-                                <div class="col-lg-12 d-flex justify-content-end">
+                                <div class="col-lg-6 d-flex flex-column mb-20">
+                                    <label for="total">Bukti Pembayaran (.jpg/.jpeg/.png)</label>
+                                </div>
+                                <div class="col-lg-6 d-flex flex-column mb-20">
+                                    <input name="bukti_bayar" type="file" required="">
+                                </div>
+
+                                <div class="col-lg-12 d-flex justify-content-end mb-20">
                                     <button type="submit" class="primary-btn dark mt-30 text-uppercase">Place Order</button>
                                 </div>
-                                <div class="alert-msg"></div>
+                                <!-- <div class="alert-msg"></div> -->
                             </div>
                         </form>
                     </div>

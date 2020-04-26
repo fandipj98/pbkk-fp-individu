@@ -42,9 +42,9 @@
 			<div class="header-wrap">
 				<div class="header-top d-flex justify-content-between align-items-center navbar-expand-md">
 					<div class="col menu-left">
-						<a class="active" href="{{ url("/") }}">Home</a>
+						<a href="{{ url("/") }}">Home</a>
 						<a href="{{ url("menu") }}">Menu</a>
-						<a href="{{ url("/") }}">About</a>
+						<a href="{{ url("about") }}">About</a>
 					</div>
 					<div class="col-3 logo">
 						<a href="{{ url("/") }}"><img class="mx-auto" src="{{ url("img/RestoKu.png") }}" alt=""></a>
@@ -90,6 +90,26 @@
 	<!--================ End Header Area =================-->
 
 	{% block content %} {% endblock %}
+
+	<!--================ Start Footer Area =================-->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-11 col-md-4 col-sm-4">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<ul>
+							<li>Fandi Pranata Jaya</li>
+							<li>05111740000056</li>
+							<li>PBKK - C</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</footer>
+	<!--================ End Footer Area =================-->
 
 	<!-- Load JS -->
 	{{ assets.outputJs() }}

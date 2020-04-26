@@ -20,19 +20,26 @@
 		</div>
 	</section>
     <!--================ End banner Area =================-->
-    
-	{% for menu in menus %}
-	<div class="col-lg-4 col-md-6">
-		<div class="menu-area">
-		{{ image(menu.foto_menu) }}
-			<div>
-				<h3>{{ menu.nama_menu }}</h3>
-				<h4>{{ menu.jenis_menu }}</h4>
-				<h4><span>Rp. </span>{{ menu.harga_menu }}</h4>
-				<a href="menu/show/{{ menu.id_menu }}" class="primary-btn">Details</a>
+	<br>
+	<section class="post-content-area">
+		{% for menu in menus %}
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 posts-list">
+					<div class="single-post row">
+						<div class="col-lg-12 col-md-9 ">
+							<div>
+								<img src="{{ menu.foto_menu }}" width="50%" height="400">
+							</div>
+							<h3 class="posts-title" >{{ menu.nama_menu }}</h3>
+							<h4 class="excert" >{{ menu.jenis_menu }}</h4>
+							<h4 class="excert"><span>Rp. </span>{{ menu.harga_menu }}</h4>
+							<a href="menu/show/{{ menu.id_menu }}" class="primary-btn">Details</a>					
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	{% endfor %}
-
+		{% endfor %}
+	</section>
 {% endblock %}

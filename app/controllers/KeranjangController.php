@@ -60,7 +60,7 @@ class KeranjangController extends ControllerBase
                     
                 }
                 else{
-                    // buat item baru
+                    // buat item keranjang baru
                     $keranjang = new Keranjang();
                     $keranjang->id_user = $id_user;
                     $keranjang->id_menu = $id_menu;

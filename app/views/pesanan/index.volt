@@ -20,39 +20,51 @@
 		</div>
 	</section>
     <!--================ End banner Area =================-->
-    
     {% if flag == 1 %}
-        <table>
-            <tbody>
-                {% for keranjang in keranjangs %}
-                    <tr>
-                        <td>{{ keranjang.menu.nama_menu }}</td>
-                        <td>
-                            <form method="POST" action="{{ url("keranjang/update") }}">
-                                <input name="buttonFlag" value="0" hidden>
-                                <input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-                                <button type="submit" class="genric-btn primary">-</button>
-                            </form>
-                        </td>
-                        <td>{{ keranjang.jumlah_item }}</td>
-                        <td>
-                            <form method="POST" action="{{ url("keranjang/update") }}">
-                                <input name="buttonFlag" value="1" hidden>
-                                <input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-                                <button type="submit" class="genric-btn primary">+</button>
-                            </form>
-                        </td>
-                        <td>Rp. {{ keranjang.harga_sementara }}</td>
-                        <td>
-                            <form method="POST" action="{{ url("keranjang/delete") }}">
-                                <input name="id_keranjang" value="{{ keranjang.id_keranjang }}" hidden>
-                                <button type="submit" class="genric-btn danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="section-top-border">
+		<div class="progress-table-wrap">
+			<div class="progress-table">
+				<div class="table-head">
+                    <div class="visit">ID Pesanan</div>
+                    <div class="visit">Email User</div>
+                    <div class="visit">Harga Subtotal</div>
+                    <div class="visit">Delivery Fee</div>
+                    <div class="visit">Harga Total</div>
+					<div class="visit">Alamat Pengantaran</div>
+					<div class="visit">Keterangan Tambahan</div>
+					<div class="serial">Bukti Bayar</div>
+					<div class="visit">Status Pembayaran</div>
+					<div class="visit">Status Pengiriman</div>
+				</div>
+				{% for pesanan in pesanans %}
+				<div class="table-row">
+                    <div class="visit">{{ pesanan.id_pesanan }}</div>
+                    <div class="visit">{{ pesanan.users.email }}</div>
+                    <div class="visit">Rp. {{ pesanan.harga_subtotal }}</div>
+                    <div class="visit">Rp. {{ pesanan.ongkos_kirim }}</div>
+                    <div class="visit">Rp. {{ pesanan.harga_total }}</div>
+                    <div class="visit">{{ pesanan.alamat_kirim }}</div>
+                    <div class="visit">{{ pesanan.keterangan }}</div>
+					<div class="serial"><img src="{{ pesanan.bukti_bayar }}" alt="flag"></div>
+					<div class="visit">
+                        {% if pesanan.sudah_dibayar == 1 %}
+                            Lunas
+                        {% else %}
+                            Belum Lunas
+                        {% endif %}
+                    </div>
+                    <div class="visit">
+                        {% if pesanan.status_pengiriman == 1 %}
+                            Sudah Sampai Tujuan
+                        {% else %}
+                            Sedang Diproses
+                        {% endif %}
+                    </div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 	{% endif %}
 
 {% endblock %}

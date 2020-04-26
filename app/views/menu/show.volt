@@ -22,56 +22,39 @@
 		</div>
 	</section>
     <!--================ End banner Area =================-->
-    
-	<!-- Menu Details Section Begin -->
-    <section class="menu-area">
+    <section class="post-content-area single-post-area">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="menu-area">
-                        {{ image(menu.foto_menu) }}
-                        <div class="rd-text">
-                            <div class="rd-title">
-                                <h3>{{ menu.nama_menu }}</h3>
+			<div class="row">
+				<div class="col-lg-12 posts-list">
+					<div class="single-post row">
+						<div class="col-lg-12 col-md-9 ">
+							<div>
+								<img src="{{ url(menu.foto_menu) }}" width="50%" height="400">
+							</div>
+                            <h3 class="posts-title" >{{ menu.nama_menu }}</h3>
+                            <p class="excert fz-18"> {{ menu.deskripsi_menu }}</p>
+                            <div>
+                                <h4 class="excert">Tipe Hidangan: </h4>
+                                <h4 class="excert">{{ menu.jenis_menu }}</h4>
                             </div>
-
-                            {# Description #}
-                            <p> {{ menu.deskripsi_menu }}</p>
-
-                            {# Details #}
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td class="r-o">Tipe Hidangan:</td>
-                                        <td>{{ menu.jenis_menu }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Tersedia:</td>
-                                        <td>{{ menu.tersedia }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Harga:</td>
-                                        <td>Rp. {{ menu.harga_menu }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {# Member #}
-                    {% if session.has("auth") %}
-                        {% if menu.tersedia > 0 %}
-                            <div class="col-lg-4">
-                                <form method="POST" action="{{ url("keranjang/create") }}">
-                                    <input name="id_menu" value="{{ menu.id_menu }}" hidden>
-                                    <button type="submit" class="primary-btn">Tambah Ke Keranjang</button>
-                                </form>
-                            </div>
-                        {% endif %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+                            <h4 class="excert">Tersedia: {{ menu.tersedia }}</h4>
+							<h4 class="excert"><span>Rp. </span>{{ menu.harga_menu }}</h4>
+                            {# Member #}
+                            {% if session.has("auth") %}
+                                {% if menu.tersedia > 0 %}
+                                    <div>
+                                        <form method="POST" action="{{ url("keranjang/create") }}">
+                                            <input name="id_menu" value="{{ menu.id_menu }}" hidden>
+                                            <button type="submit" class="primary-btn">Tambah Ke Keranjang</button>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            {% endif %}				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </section>
-    <!-- Menu Details Section End -->
 
 {% endblock %}

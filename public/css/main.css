@@ -282,6 +282,13 @@ th {
 .ml-50 {
   margin-left: 50px; }
 
+.ml-100{
+  margin-left: 100px;
+}
+
+.ml-190{
+  margin-left: 190px;
+}
 .mr-0 {
   margin-right: 0 !important; }
 
@@ -516,7 +523,7 @@ th {
 .text-left {
   text-align: left; }
 
-.text-rigth {
+.text-right {
   text-align: right; }
 
 .flex {
@@ -924,6 +931,10 @@ th {
 .section-top-border {
   padding: 50px 0;
   border-top: 1px dotted #eee; }
+  .section-top-border .progress-table-wrap .progress-table .table-head {
+    text-align: center !important; }
+    .section-top-border .progress-table-wrap .progress-table .table-row .visit {
+    display: inline-block; }
 
 .switch-wrap {
   margin-bottom: 10px; }
@@ -1155,7 +1166,8 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 991px) {
   .progress-table-wrap {
-    overflow-x: scroll; } }
+    overflow-x: scroll;
+    text-align: center; } }
 
 .progress-table {
   background: #fff;
@@ -1167,7 +1179,8 @@ h1, h2, h3, h4, h5, h6 {
   .progress-table .country {
     width: 28.07%; }
   .progress-table .visit {
-    width: 19.74%; }
+    width: 19.74%;
+  text-align: center; }
   .progress-table .percentage {
     width: 40.36%;
     padding-right: 50px; }
@@ -1181,10 +1194,12 @@ h1, h2, h3, h4, h5, h6 {
   .progress-table .table-row {
     padding: 15px 0;
     border-top: 1px solid #edf3fd;
-    display: flex; }
+    display: flex;
+    text-align: center; }
     .progress-table .table-row .serial, .progress-table .table-row .country, .progress-table .table-row .visit, .progress-table .table-row .percentage {
       display: flex;
-      align-items: center; }
+      align-items: center;
+      text-align:center; }
     .progress-table .table-row .country img {
       margin-right: 15px; }
     .progress-table .table-row .percentage .progress {
@@ -2387,9 +2402,11 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 50px; } }
 
 .post-content-area {
-  background-color: #f9f9ff; }
+  background-color: #f9f9ff;
+  text-align: center; }
   .post-content-area .single-post {
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    }
     .post-content-area .single-post .meta-details {
       text-align: right;
       margin-top: 35px; }
@@ -2902,7 +2919,8 @@ h1, h2, h3, h4, h5, h6 {
 /* =================================== */
 /*-------- start footer Area -------------*/
 .footer-area {
-  background-color: #04091e; }
+  background-color: #04091e;
+  text-align: right; }
 
 .single-footer-widget h4 {
   color: #fff;
@@ -2983,7 +3001,8 @@ h1, h2, h3, h4, h5, h6 {
     width: 85%; } }
 
 .footer-bottom {
-  padding-top: 50px; }
+  padding-top: 50px;
+  text-align: right; }
   @media (max-width: 575px) {
     .footer-bottom {
       padding-top: 20px; } }

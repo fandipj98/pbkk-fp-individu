@@ -63,6 +63,10 @@ class PesananController extends ControllerBase
                 $this->view->flag = 0;
             }
         }
+        else{
+            $this->flashSession->error("Error: Bukan method post pembayaran.");
+            $this->response->redirect('error');
+        }
     }
 
     public function createAction()

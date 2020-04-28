@@ -37,7 +37,7 @@
                         </div>
                         {% for keranjang in keranjangs %}
                         <div class="table-row">
-                            <div class="serial"> <img src="{{ keranjang.menu.foto_menu }}" alt="flag"></div>
+                            <div class="serial"> <img src="{{ keranjang.menu.foto_menu }}" alt="flag" width="150" height="150"></div>
                             <div class="visit">{{ keranjang.menu.nama_menu }}</div>
                             <div class="visit">{{ keranjang.jumlah_item }}</div>
                             <div class="visit">Rp. {{ keranjang.harga_sementara }}</div>

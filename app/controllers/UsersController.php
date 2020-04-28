@@ -43,7 +43,7 @@ class UsersController extends ControllerBase
                 $user->firstName = $firstName;
                 $user->lastName = $lastName;
                 $user->no_telp = $no_telp;
-                $user->pass = $pass;
+                $user->pass = $this->security->hash($pass);
                 $user->status = $status;
 
                 $success = $user->save();
